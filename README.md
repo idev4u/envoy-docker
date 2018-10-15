@@ -4,7 +4,9 @@ I would better understand how to use envoy and for this is this project. All the
 
 ## how to use
 
-git clone ...
+```shell
+git clone git@github.com:idev4u/envoy-docker.git
+```
 
 ```shell
 cd envoy-docker
