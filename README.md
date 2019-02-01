@@ -20,6 +20,19 @@ docker build -t envoy:v1 .
 docker run -d --name envoy -p 9901:9901 -p 10000:10000 envoy:v1
 ```
 
+```
+docker exec -it envoy /bin/sh
+# go run src/main/main.go &
+# Server is running ...
+curl localhost:8080
+hello world
+{"info":"hello world"}
+```
+
 ```shell
-curl -v 127.0.0.1:10000
+curl -v 127.0.0.1:10000/info
+```
+or 
+```
+curl $(hostname).local:10000/info
 ```

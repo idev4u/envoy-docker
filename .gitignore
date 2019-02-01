@@ -1,0 +1,3 @@
+envoy-go-endpoint/bin/*
+envoy-go-endpoint/pkg/*
+envoy-go-endpoint/src/github.com/*

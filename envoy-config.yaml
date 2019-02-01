@@ -23,17 +23,19 @@ static_resources:
             - name: local_service
               domains: ["*"]
               routes:
-              - match: { prefix: "/" }
-                route: { host_rewrite: www.google.com, cluster: service_google }
+              - match: { prefix: "/info" }
+                route:
+                  cluster: service_go
           http_filters:
           - name: envoy.router
   # cluster ???
   clusters:
-  - name: service_google
+  - name: service_go
     connect_timeout: 0.25s
     type: LOGICAL_DNS
     # Comment out the following line to test on v6 networks
     dns_lookup_family: V4_ONLY
     lb_policy: ROUND_ROBIN
-    hosts: [{ socket_address: { address: google.com, port_value: 443 }}]
-    tls_context: { sni: www.google.com }
+    hosts: [{ socket_address: { address: localhost, port_value: 8080 }}]
+    # hosts: [{ socket_address: { address: google.com, port_value: 443 }}]
+    # tls_context: { sni: www.google.com }
